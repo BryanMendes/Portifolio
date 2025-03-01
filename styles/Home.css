@@ -1,0 +1,175 @@
+/*estilização geral da home*/
+.Home {
+    display: flex;
+    padding: 10px 30px;
+    min-height: 100vh;
+    background: linear-gradient(45deg, #000000, #5a2020); /* Gradiente escuro */
+    position: relative;
+}
+/*cria a linha estetica no topo das seçoes*/
+.Home::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #ff0000, transparent);
+    box-shadow: 0 2px 5px rgba(233, 73, 73, 0.3);
+}
+
+/*estilização basica do conteudo da home*/
+.homeContent {
+    padding: 30px 10px;
+    width: 30%;
+}
+
+/*estilização da parte da imagem*/
+.slideShowHome {
+    position: relative;
+    max-width: 300px;
+    height: 300px;
+    margin: 20px 0;
+    overflow: hidden; /*enconde o "resto da foto"*/
+    border-radius: 150px;
+    border: 3px solid rgba(255, 255, 255, 0.2); /* Borda sutil */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* Sombra externa */
+    transition: all 0.3s ease;
+}
+
+/* estilização do efeito do mouse na foto */
+.slideShowHome:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+
+/*inicio os slides invisiveis*/
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    object-fit: cover;
+    border: 2px solid white; /* Borda branca nas imagens */
+    filter: grayscale(20%) contrast(110%); /* Efeito sofisticado */
+    z-index: 1;
+}
+
+/*deixa a imagem correspondente do momento visivel*/
+.slide.active {
+    opacity: 1;
+    filter: grayscale(0%) contrast(100%);
+    transform: scale(1.03); /* Zoom sutil na imagem ativa */
+}
+
+/*estilização geral do texto embaixo da imagem */
+.textImgHome {
+    display: flex;
+    flex-direction: column;
+}
+/*estilização do texto em si*/
+.textImgHome p {
+    font-family: 'Segoe UI', sans-serif;
+    color: #f0f0f0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateX(-50%);
+    padding: 10px 25px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.1);
+    margin: 5px 150px;
+    z-index: 2; /* Coloca o texto na frente das imagens */
+    width: max-content; /* Evita quebra indesejada */
+}
+
+/*estilização geral do texto a direita da foto/ embaixo no celular*/
+.homeContentRight {
+    flex: 1;
+    padding: 30px 0px;
+    justify-content: left;
+    min-height: 200px;
+    margin-left: -20px;
+    width: 100%;
+}
+
+/*estilização geral da area do efeito de digitação*/
+.typewriter-container {
+    position: relative;
+    display: inline-block;
+}
+
+/*estilização da area do efeito de digitação*/
+.typewriter {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 300;
+    white-space: pre-wrap; /* Permite quebra de linha */
+    word-wrap: break-word; /* Quebra palavras longas */
+    overflow: hidden; /* Mantém o efeito de digitação */
+    display: inline-block;
+    max-width: 100%; /* Garante que o texto não ultrapasse a largura da tela */
+    min-height: 2em;
+}
+
+/*estilização do tracinho/cursor que fica no final da digitação*/
+.cursor {
+    position: absolute;
+    right: -8px;
+    top: 50%; /* Posiciona no meio vertical */
+    transform: translateY(-50%); /* Ajusta fino para centralizar */
+    width: 2px;
+    height: 1.5em; /* Altura igual à altura da fonte */
+    background: #fff;
+    animation: blink 0.8s infinite;
+    display: none;
+}
+
+/* Animação do cursor */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Animação de digitação */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/*apenas dando cor ao texto*/
+.textHomeConteRight {
+    color: #ffffffe0;
+}
+
+/* Media Query para responsividade sem alterar a identidade gráfica */
+@media (max-width: 768px) {
+    .Home {
+        flex-direction: column;
+        padding: 10px 15px;
+    }
+    .homeContent {
+        width: 100%;
+        padding: 20px 10px;
+    }
+    .textImgHome p {
+        transform: none;
+        margin: 5px auto;
+        text-align: center;
+    }
+    .homeContentRight {
+        margin-left: 0;
+        padding: 20px 0;
+    }
+    .slideShowHome {
+        margin: 20px auto;
+    }
+    .typewriter {
+        font-size: 1.8rem;
+    }
+}

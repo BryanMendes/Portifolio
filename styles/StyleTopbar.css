@@ -1,0 +1,80 @@
+/* estilização do body */
+body {
+    margin: 0;
+    padding-top: 100px; /* Espaço para a topbar fixa */
+    background: #0a0a0a; /* Fundo escuro para contraste */
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/*estilização principal da top bar*/
+.topbar {
+    position: fixed; /*topbar fixa no topo*/
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: rgba(16, 16, 16, 0.8); /* Preto semi-transparente */
+    backdrop-filter: blur(20px); /* Efeito de blur intenso */
+    z-index: 1000; /*Garantir prioridade do topbar*/
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
+}
+
+/*estilização do mensagem na topbar*/
+.textTB {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/*estilização geral da area dos botoes da topbar*/
+.buttons {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+/*estilização dos proprios botoes */
+.buttons button {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 0.8rem 1.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+/*estilização dos botoes quando o mouse chega ate eles*/
+.buttons button:hover {
+    color: #fff;
+}
+
+/*estilização da linha que aparece nos botoes com o mouse*/
+/*parte invisivel*/
+.buttons button::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s ease;
+}
+
+/*ativação da linha dos botoes*/
+.buttons button:hover::after {
+    width: 100%;
+}
+
+/* estilização de um pequeno efeito ao chegar o mouse na topbar */
+.topbar:hover {
+    background: rgba(16, 16, 16, 0.95);
+    backdrop-filter: blur(25px);
+}

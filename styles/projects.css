@@ -1,0 +1,105 @@
+/* estilização geral da seção projects */
+.Projects {
+    position: relative;
+    background: linear-gradient(45deg, #000000, #68244b);
+    padding: 50px 20px;
+    min-height: 100vh;
+}
+
+/* cria uma linha decorativa no topo da seção projects */
+.Projects::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #ff00ea, transparent);
+    box-shadow: 0 2px 5px rgba(158, 0, 132, 0.3);
+}
+
+/* estilização do título da seção */
+.section-title {
+    text-align: center;
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* cria o grid para exibição dos projetos */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 10%;
+}
+
+/* estilização dos cards individuais dos projetos */
+.project-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* efeito hover nos cards para destacá-los */
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* estilização da imagem do projeto */
+.project-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+
+/* estilização do container de conteúdo do projeto */
+.project-content {
+    padding: 20px;
+}
+
+/* estilização do título do projeto */
+.project-content h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+/* estilização da descrição do projeto */
+.project-content p {
+    color: rgba(255,255,255,0.9);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* estilização do container das tecnologias utilizadas */
+.project-techs {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* estilização dos ícones das tecnologias */
+.project-techs img {
+    width: 35px;
+    height: 35px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    transition: transform 0.3s ease;
+}
+
+/* efeito hover nos ícones das tecnologias para realce */
+.project-techs img:hover {
+    transform: scale(1.2);
+}
+
+/* cores temáticas para os cards dos projetos */
+.p1 { border: 1px solid #5952a0; }
+.p2 { border: 1px solid #804848; }
+.p3 { border: 1px solid #78a33f; }

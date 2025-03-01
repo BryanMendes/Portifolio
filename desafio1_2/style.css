@@ -1,0 +1,181 @@
+/* styles.css */
+
+/* Reseta as margens e o padding e define o box-sizing para todos os elementos */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilização do body: define altura, centraliza conteúdo, aplica background animado e define fonte */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #1a1a1a, #4a4453);
+    animation: gradientShift 10s ease infinite;
+    font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Animação do background para criar efeito dinâmico de gradiente */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Estilização do botão mágico: define padding, tamanho, background gradiente, borda arredondada, sombra e transição */
+.magic-button {
+    padding: 15px 30px;
+    font-size: clamp(1.2em, 4vw, 1.5em);
+    background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    margin: 10px;
+}
+
+/* Efeito hover para o botão mágico: aumenta de tamanho e rotaciona levemente, intensificando a sombra */
+.magic-button:hover {
+    transform: scale(1.1) rotate(3deg);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+}
+
+/* Efeito ativo para o botão mágico: reduz o tamanho e rotaciona levemente para simular clique */
+.magic-button:active {
+    transform: scale(0.95) rotate(-1deg);
+}
+
+/* Game Board: define o container do jogo em grid e o oculta inicialmente */
+.game-board {
+    display: none;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px;
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+/* Carta do jogo: define tamanho proporcional, cria efeito 3D e transição suave */
+.card {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* Mantém a proporção quadrada */
+    position: relative;
+    background: #fff;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+/* Carta virada: aplica rotação 3D para mostrar a face oposta */
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+/* Face da carta: define o posicionamento absoluto, oculta a face traseira e centraliza o conteúdo */
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    font-size: clamp(12px, 3vw, 1.2em);
+    font-weight: bold;
+}
+
+/* Face frontal da carta: estilizada para quando a carta está virada */
+.front {
+    background: #ffffff;
+    transform: rotateY(180deg);
+}
+
+/* Face traseira da carta: aplica um gradiente vibrante */
+.back {
+    background: linear-gradient(45deg, #3a1c71, #d76d77, #ffaf7b);
+}
+
+/* Botão de reiniciar: estilizado e oculto inicialmente, posicionado fixo na parte inferior */
+.restart-btn {
+    display: none;
+    position: fixed;
+    bottom: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 300px;
+    background: linear-gradient(135deg, #4ecdc4, #45b7d1);
+    padding: 15px;
+    font-size: clamp(1em, 4vw, 1.5em);
+}
+
+/* Efeito hover para o botão de reiniciar: aumenta de tamanho e rotaciona levemente */
+.restart-btn:hover {
+    transform: translateX(-50%) scale(1.1) rotate(-3deg);
+}
+
+/* Exibição da pontuação: posicionado fixo no topo com sombra de texto */
+.score-display {
+    position: fixed;
+    top: 20px;
+    color: white;
+    font-size: clamp(1em, 4vw, 1.2em);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Efeito de vitória: mensagem centralizada com animação de explosão, oculta inicialmente */
+.victory-effect {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: gold;
+    animation: explode 1s ease-out;
+    display: none;
+    font-size: clamp(2em, 10vw, 3em);
+    z-index: 1000;
+}
+
+/* Animação explode para o efeito de vitória: aumenta de tamanho e desaparece */
+@keyframes explode {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+}
+
+/* Media Query para telas pequenas (max-width: 600px): ajusta gap do grid e padding do botão mágico */
+@media (max-width: 600px) {
+    .game-board {
+        gap: 8px;
+        max-width: 95%;
+    }
+    
+    .magic-button {
+        padding: 12px 25px;
+    }
+}
+
+/* Media Query para telas muito pequenas (max-width: 400px): reduz gap, ajusta borda das faces e posicionamento do botão de reiniciar */
+@media (max-width: 400px) {
+    .game-board {
+        gap: 5px;
+    }
+    
+    .card-face {
+        border-radius: 10px;
+    }
+    
+    .restart-btn {
+        bottom: 3vh;
+    }
+}

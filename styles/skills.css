@@ -1,0 +1,234 @@
+/* estilização geral da seção skills */
+.skills {
+    background: linear-gradient(45deg, #1a1a1a, #42310f);
+    padding: 4rem 5%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* cria uma linha decorativa no topo da seção skills */
+.skills::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
+}
+
+/* container principal que organiza as habilidades em grid */
+.tecnicas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+/* estilização dos cabeçalhos das seções de habilidades e interpessoais */
+.progress-container p,
+.progress-container2 p,
+.interpessoal > p {
+    font-size: 1.8rem;
+    color: #ffd700;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* estilização dos itens de habilidade (cards individuais) */
+.skill-item1, .skill-item2, .skill-item3, .skill-item4, .skill-item5 {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 1.2rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+/* efeito hover para o primeiro item de habilidade na progress-container */
+.progress-container .skill-item1:hover {
+    transform: translateX(10px);
+    background: linear-gradient(90deg, #ff450022, transparent);
+}
+
+/* efeito hover para o segundo item de habilidade na progress-container */
+.progress-container .skill-item2:hover {
+    transform: translateX(10px);
+    background: linear-gradient(90deg, #ffd70022, transparent);
+}
+
+/* efeito hover para o terceiro item de habilidade na progress-container */
+.progress-container .skill-item3:hover {
+    transform: translateX(10px);
+    background: linear-gradient(90deg, #ff000022, transparent);
+}
+
+/* efeito hover para o quarto item de habilidade na progress-container */
+.progress-container .skill-item4:hover {
+    transform: translateX(10px);
+    background: linear-gradient(90deg, #0004ff22, transparent);
+}
+
+/* efeito hover para o quinto item de habilidade na progress-container */
+.progress-container .skill-item5:hover {
+    transform: translateX(10px);
+    background: linear-gradient(90deg, #ff00f222, transparent);
+}
+
+/* efeito hover para o primeiro item de habilidade na progress-container2 */
+.progress-container2 .skill-item1:hover {
+    transform: translateX(10px);
+    background: linear-gradient(90deg, #ff000022, transparent);
+}
+
+/* efeito hover para o segundo item de habilidade na progress-container2 */
+.progress-container2 .skill-item2:hover {
+    transform: translateX(10px);
+    background: linear-gradient(90deg, #ff00aa22, transparent);
+}
+
+/* efeito hover para o terceiro item de habilidade na progress-container2 */
+.progress-container2 .skill-item3:hover {
+    transform: translateX(10px);
+    background: linear-gradient(90deg, #2bff0022, transparent);
+}
+
+/* efeito hover para o quarto item de habilidade na progress-container2 */
+.progress-container2 .skill-item4:hover {
+    transform: translateX(10px);
+    background: linear-gradient(90deg, #0059ff22, transparent);
+}
+
+/* estilização dos ícones das habilidades */
+.skill-icon {
+    width: 50px;
+    height: 50px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    transition: transform 0.3s ease;
+}
+
+/* efeito hover nos ícones para aumentar e rotacionar levemente */
+.skill-icon:hover {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+/* estilização das barras de progresso */
+.progress-bar {
+    width: 100%;
+    height: 25px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+/* cria a barra interna da progress-bar que se expande conforme a animação */
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: var(--progress-color, #76c7c0);
+    border-radius: 15px;
+    transition: width 1.5s ease;
+}
+
+/* define a largura final da barra animada */
+.progress-bar.animated::after {
+    width: var(--width, 0);
+}
+
+/* estilização das linhas de divisão dentro das barras de progresso */
+.partition-line {
+    color:#fff;
+    background: rgba(255,255,255,0.2);
+    width: 1px;
+}
+.partition-1 {
+    left: 33.33%; /* posição do primeiro traço (Iniciante/Intermediário) */
+}
+.partition-2 {
+    left: 66.66%; /* posição do segundo traço (Intermediário/Avançado) */
+}
+
+/* estilização dos labels que indicam os níveis de habilidade */
+.partition-labels span {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 300;
+    opacity: 0.8;
+}
+
+/* container para os cards de habilidades interpessoais */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+/* estilização geral dos cards interpessoais */
+.card {
+    width: 100%;
+    padding: 2rem;
+    border: none;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* cria um efeito de fundo gradiente nos cards */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg);
+}
+
+/* efeito hover nos cards para destacá-los */
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* cores temáticas para os cards interpessoais */
+.h1 { background: linear-gradient(45deg, #5952a0, #443d7a); }
+.h2 { background: linear-gradient(45deg, #804848, #5c3636); }
+.h3 { background: linear-gradient(45deg, #78a33f, #5c7d30); }
+
+/* estilização dos ícones dos cards interpessoais */
+.habilidade-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+}
+
+/* estilização do título dos cards */
+.card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* estilização do texto descritivo dos cards */
+.card h4 {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.9);
+    font-weight: 300;
+}
